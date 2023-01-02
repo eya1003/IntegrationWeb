@@ -1,0 +1,110 @@
+body {
+    background-color: white;
+    color: red;
+}
+
+$primary-color: blue;
+
+.btn {
+    color: $primary-color;
+}
+// naving 
+nav{
+    ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+     }
+    li {
+        display: block;
+    }
+    a {
+        display: block;
+        padding: 6px 12px;
+        text-decoration: none;
+
+        @media screen and (max-width: 600px) {
+            padding: 3px 6px;
+        }
+    }
+}
+
+//mixin 
+@mixin flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card {
+    @include flex;
+}
+
+        // mixin avec changement dans la direction variable
+      @mixin flex1 ($direction) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: $direction;
+    }
+    
+    .card1 {
+        @include flex1(row);
+    }  
+
+@mixin transform($pro){
+    transform: $pro;
+}
+
+.box {
+    @include transform(rotate(50deg));
+}
+
+// fonction
+@function rem($size , $base:16){
+    @return 1rem * $size / $base;
+}
+
+// structure fonctionnel if else  
+$primary : rgb(81,72,72);
+.btn {
+    background-color: $primary;
+    @if lightness($primary)> 50% {
+        color: aliceblue;
+    }
+    @else {
+        color: black;
+    }
+}
+
+// tsructure iteratif  : for  i form 1 to 5 yabda m 1 lel 4 
+    // for i from 1 through 5 yabda m 1 hata lel 5
+ @for $i from 1 to 5 {
+    .m-#{$i} {
+        margin:  0 ($i * 0.25rem);
+    }
+ }
+    //each 
+$colors : "blue", "red", "purple";
+@each $var in $colors {
+    .btn-#{$var} {
+        background-color: #{$var};
+    }
+}
+
+// each avec success , alert 
+// nth($c , 1 ) pour recupere le cle : primary success.. 
+// nth($c , 2 ) pour reccuperer la valeur : couleur 
+$categories : primary #000fff, success #00ff00 , dark #000 , alert #ff0000 ;
+@each $c in $categories {
+    .btn-#{nth($c, 1)} {
+        background-color: #{nth($c, 2)};
+        @if lightness( nth($c, 2) ) > 50% {
+            color: white;
+        }
+        @else {
+            color: black;
+        }
+    }
+}
