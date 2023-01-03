@@ -1,3 +1,6 @@
+@use "var" as v;
+
+
 .text, textarea, h1 {
     color: red;
     font-size: 20px;
@@ -16,4 +19,58 @@ $langages: blue , "CSS", "HTML", "JAVA" , "REACT" ;
 .btn {
     @include btn(yellow) ; 
     color: testfonct();
+}
+
+h1 {
+    font-size: 6rem *2;
+    color: v.$font-color;
+}
+
+
+$border-color: red;
+.item {
+border: 2px solid $border-color;
+}
+
+
+$white: #fff;
+$blue: #0097e6;
+$text-color: #000fff;
+@function background($text-color) {
+@if ($text-color == $white) {
+@return $blue;
+} @else {
+@return $white;
+}}
+.button {
+color: $text-color;
+
+background-color: background($text-color);
+
+}
+
+// ki nbadel . bel % iwali ma3adch iraha css w naaml l'heritage aadi 
+.btn-1 {
+    margin: 5px;
+    border-radius: 2px;
+}
+    .btn-2{
+    @extend .btn-1;
+    background-color: green;
+    }
+    .btn-3{
+    @extend .btn-2;
+    }
+
+
+.error {
+    background-color: red;
+    border:  1px solid black;
+
+    &--exception{
+        border:  3px solid black;
+    }
+    &:hover{
+        background-color: chartreuse;
+    }
 }

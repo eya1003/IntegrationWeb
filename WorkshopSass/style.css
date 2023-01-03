@@ -8,4 +8,38 @@
   color: blue;
 }
 
+h1 {
+  font-size: 12rem;
+  color: #15D;
+}
+
+.item {
+  border: 2px solid red;
+}
+
+.button {
+  color: #000fff;
+  background-color: #fff;
+}
+
+.btn-1, .btn-2, .btn-3 {
+  margin: 5px;
+  border-radius: 2px;
+}
+
+.btn-2, .btn-3 {
+  background-color: green;
+}
+
+.error {
+  background-color: red;
+  border: 1px solid black;
+}
+.error--exception {
+  border: 3px solid black;
+}
+.error:hover {
+  background-color: chartreuse;
+}
+
 /*# sourceMappingURL=style.css.map */
